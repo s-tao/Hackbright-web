@@ -10,7 +10,8 @@
 
   <ul>
       {% for project_title, grade in rows %}
-         <li> Title: {{ project_title }} | Grade: {{ grade }} </li>
+         <li> Title: <a href="/project?title={{ project_title }}"/>
+         {{ project_title }}</a> | Grade: {{ grade }} </li>
       {% endfor %}
   </ul>
 

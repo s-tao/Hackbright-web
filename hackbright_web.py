@@ -50,6 +50,23 @@ def get_student():
                            rows=rows)
     return html
 
+@app.route("/project")
+def show_project_info():
+
+    title = request.args.get('title')
+    row_title = hackbright.get_project_by_title(title)  
+
+    description = row_title[1]
+    max_grade = row_title[2]
+
+    rows_grades = hackbright.get_grades_by_title(title)
+
+
+    return render_template("project_info.html", title=title, 
+                                                description=description,
+                                                max_grade=max_grade,
+                                                rows_grades=rows_grades)
+
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
     app.run(debug=True, host="0.0.0.0")
