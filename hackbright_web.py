@@ -7,6 +7,17 @@ import hackbright
 app = Flask(__name__)
 
 
+@app.route("/")
+def homepage():
+
+    student_rows = hackbright.get_students()
+
+    project_rows = hackbright.get_projects()
+
+
+    return render_template("homepage.html", student_rows=student_rows, 
+                                            project_rows=project_rows)
+
 
 @app.route("/new-student-form")
 def student_form():
@@ -61,8 +72,7 @@ def show_project_info():
 
     rows_grades = hackbright.get_grades_by_title(title)
 
-
-    return render_template("project_info.html", title=title, 
+    return render_template("project_info.html", title=title,
                                                 description=description,
                                                 max_grade=max_grade,
                                                 rows_grades=rows_grades)
