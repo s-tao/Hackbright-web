@@ -8,13 +8,11 @@
 
   <p>GitHub Account: {{ github }}</p>
 
-  {% for row in rows %}
-
-    <ul>
-        <li> Title: {{ row[0] }} | Grade: {{ row[1] }} </li>
-    </ul>
-
-  {% endfor %}
+  <ul>
+      {% for project_title, grade in rows %}
+         <li> Title: {{ project_title }} | Grade: {{ grade }} </li>
+      {% endfor %}
+  </ul>
 
 </body>
 </html>
